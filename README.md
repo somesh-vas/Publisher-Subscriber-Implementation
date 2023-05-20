@@ -1,70 +1,71 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*********************************Pre-Requisites**************************************
+1.Install mongoDB Compass (link to download https://www.mongodb.com/try/download/community)
+2.Install ganache
+	Create a new workspace
+	Keep it aside for now... dont close it
 
-## Available Scripts
+3.Install metamask extension in chrome.
+	Create an account
+	Enter inside
+	Enable test network from settings 
+	Add a new network
+	Add a network manually
+	network name : ganache_local_network
+	new rpc url : http://127.0.0.1:7545
+	chain id : 1337
+	currency symbol : GAN 
+	click save
+	switch to ganache network
 
-In the project directory, you can run:
+4.Import accounts into metamask
+	click the circle above
+	import account
+	go to the ganache app
+	click on the key symbol on the right
+	copy the private key
+	paste it in metamask
+  repeat the steps if u want to add more accounts
+	If you are still facing issues please follow the link: https://www.youtube.com/watch?v=lv4HEyiw4EQ&t=149s&pp=ygUWYWRkIGdhbmNoZSBpbiBtZXRhbWFzaw%3D%3D
+  
+5.Install Node.js and NPM (Node Package Manager) on your computer.
 
-### `npm start`
+6.npm install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+6.Deploy contract
+  clone the project ( git clone https://github.com/somesh-vas/Publisher-Subscriber-Implementation.git )
+  open cmd prompt and type - npm install
+	go to src/contracts/pubsub.sol and copy the pubsub.sol.
+	go to remix site  (https://remix.ethereum.org/)
+	open a new file, name it as pubsub.sol and  paste the code.
+	save and compile. 
+  In DEPLOY & RUN TRANSACTIONS change environment to Dev - Ganache Provider and change Ganache JSON-RPC Endpoint: http://127.0.0.1:7545
+	deploy and copy the deploy address 
+  go to src/contracts/pubsub.sol and paste it in the addr variable in the pubsub.js
+  
+  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+/***************************************************************************************************************/
+VERY IMPORTANT NOTES...
 
-### `npm test`
+For the 1st time you are running with a new account added in the metamask, you will be prompted to 
+add/link the account included in metamask to the local file... select all the accounts... otherwise u cant use 
+every time you run a solidity code from react js side... you will have to approve the contract... metamask will
+automatically pop up.
+/***************************************************************************************************************/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+10.In the code files...
+    go to the compile page of remix of pubsub.sol 
+    copy the ABI code of the pubsub.sol file... there is a button in the last of the compile tab
+    paste it in the abi variable in the pubsub.js file in src/contracts
+    after deploying it, copy the deployment address and paste it in the addr variable in the pubsub.js file in src/contracts
+    save all.
+11.Open 3 different terminals in current location
+	terminal_1: cd .\src\DB\
+		    mongod --dbpath ./
+	terminal_2: nodemon .\src\backend\back.js
+	terminal_3: npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+YOU ARE GOOD TO GO
